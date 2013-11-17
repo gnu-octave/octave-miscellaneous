@@ -15,74 +15,19 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {Function} {[@var{string}] =} asci ([@var{columns}])
-## Print ASCI table.
+## Print ASCII table.
 ##
-## If this function is called without any input argument and without any output
-## argument then print a nice ASCI-table (excluding special characters with
-## hexcode 0x00 to 0x20) on screen with four columns per default. If this
-## function is called with one output argument then return an ASCI-table string
-## and don't print anything on screen. Finally, if this function is called with
-## one input argument of type scalar then either print (no output argument) or
-## return (one output argument) an ASCI-table with a number of columns given in
-## @var{columns}.
+## This function has been renamed @code{ascii} (note double i at the end of
+## its name) and will be removed from future versions of the miscellaneous
+## package. Please refer to @code{ascii} help text for its documentation.
 ##
-## For example,
-## @example
-## A = asci (3);
-## disp (A);
-## @end example
 ## @end deftypefn
 
 function [varargout] = asci (varargin)
-
-  %# Check number and types of input arguments
-  if (nargin == 0)
-    vcol = 4;
-  elseif (isnumeric (varargin{1}) && ...
-          isequal (size (varargin{1}), [1, 1]))
-    vcol = floor (varargin{1});
-  else
-    print_usage ();
+  persistent warned = false;
+  if (! warned)
+    warned = true;
+    warning ("asci() has been deprecated. Use ascii (note double i in the name) instead");
   endif
-
-  %# First char is #32 (0x20) and last char is #128 (0x80)
-  vtab = "";
-  voff = floor ((128 - 32) / vcol);
-
-  %# Print a first row for the and underline that row
-  for vcnt = 1:vcol
-    vtab = sprintf ("%s Dec Hex Chr ", vtab);
-  endfor
-  vtab = sprintf ("%s\n", vtab);
-
-  for vcnt = 1:vcol
-    vtab = sprintf ("%s-------------", vtab);
-  endfor
-  vtab = sprintf ("%s\n", vtab);
-
-  %# Create the lines and columns of the asci table
-  for vpos = 32:(32+voff)
-    for vcnt = 1:vcol
-      vact = (vcnt-1)*voff+vpos;
-      vstr = {num2str(vact), dec2hex(vact), char(vact)};
-      for vctn = 1:length (vstr)
-        vtab = sprintf ("%s %3s", vtab, vstr{vctn});
-      endfor
-      vtab = sprintf ("%s ", vtab);
-    endfor
-    vtab = sprintf ("%s\n", vtab);
-  endfor
-  vtab = sprintf ("%s\n", vtab);
-
-  %# Print table to screen or return it to output argument
-  if (nargout == 0)
-    printf ("%s", vtab);
-  elseif (nargout == 1)
-    varargout{1} = vtab;
-  endif
+  [varargout{1:nargout}] = ascii (varargin{:});
 endfunction
-
-%!test
-%!  A = asci ();
-%!test
-%!  A = asci (2);
