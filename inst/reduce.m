@@ -27,43 +27,37 @@
 ## contains only one item, the first item is returned.
 ##
 ## @example
-##  reduce(@@add,[1:10])
+##  reduce(@@plus,[1:10])
 ##  @result{} 55
 ##      reduce(@@(x,y)(x*y),[1:7]) 
 ##  @result{} 5040  (actually, 7!)
 ## @end example
+##
 ## @end deftypefn
 
 ## Parts of documentation copied from the "Python Library Reference, v2.5"
 
 function rv = reduce (func, lst, init)
-  if (nargin < 2) || nargin > 3 || (class(func)!='function_handle') || (nargin == 2 && length(lst)<2)
-    print_usage();
-  end
+  if (nargin < 2 || nargin > 3)
+    print_usage ();
+  elseif (! isa (func, "function_handle"))
+    error ("reduce: FUNCTION must be a function handle");
+  elseif (nargin < 3 && isempty (lst))
+    error ("reduce: LST must not be empty when INIT is undefined");
+  endif
 
-  l=length(lst);
+  start = 1;
+  if (nargin == 2)
+    init = lst(1);
+    start = 2;
+  endif
 
-  if (l<2 && nargin==3)
-    if(l==0)
-      rv=init;
-    elseif (l==1)
-      rv=func(init,lst(1));
-    end
-    return;
-  end
+  rv = init;
+  for i = start:numel(lst)
+    rv = func (rv, lst(i));
+  endfor
 
-  if(nargin == 3)
-    rv=func(init,lst(1));
-    start=2;
-  else
-    rv=func(lst(1),lst(2));
-    start=3;
-  end
-
-  for i=start:l
-    rv=func(rv,lst(i));
-  end
-end
+endfunction
 
 %!assert(reduce(@(x,y)(x+y),[],-1),-1)
 %!assert(reduce(@(x,y)(x+y),[+1],-1),0)
