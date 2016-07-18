@@ -42,6 +42,7 @@ unsigned long * pcnt(unsigned long n)
     return s;
 }
 
+// PKG_ADD: autoload ("partcnt", fullfile (fileparts (mfilename ("fullpath")), "partint.oct"));
 DEFUN_DLD (partcnt, args, ,
 "-*- texinfo -*-\n\
 @deftypefn{Loadable Function} {@var{p} =} partcnt(@var{n})\n\
