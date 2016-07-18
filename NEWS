@@ -1,6 +1,15 @@
 Summary of important user-visible changes for the miscellaneous package
 ------------------------------------------------------------------------
 ===============================================================================
+miscellaneous-X.Y.Z   Release Date: yyyy-mm-dd  Release Manager: XXXXXXX
+===============================================================================
+
+ ** The function publish has been removed from the miscellaneous package
+    because it is now released with Octave core since version 4.2.  Note
+    that it's API is slightly different.
+
+
+===============================================================================
 miscellaneous-1.2.1   Release Date: 2014-06-05  Release Manager: Carnë Draug
 ===============================================================================
 
