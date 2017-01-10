@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ## Copyright (C) 2007 Muthiah Annamalai <muthiah.annamalai@uta.edu>
-## Copyright (C) 2012 Carnë Draug <carandraug+dev@gmail.com>
+## Copyright (C) 2012-2017 Carnë Draug <carandraug+dev@gmail.com>
 ##
 ## This program is free software; you can redistribute it and/or modify it under
 ## the terms of the GNU General Public License as published by the Free Software
@@ -23,10 +23,17 @@
 ## save the function file (if no arguments are supplied, it saves file in the
 ## directory as the script)
 
+from __future__ import print_function
+
 import time
 import sys
 import os.path
-import urllib
+
+## For the sake of Python 2 and 3 compatibility
+try:
+  from urllib.request import urlopen
+except ImportError:
+  from urllib import urlopen
 
 def get_header ():
   header = [
@@ -89,8 +96,9 @@ def get_constants_table ():
   length_uncert = 25    # max length of the `uncertainty' column
   length_unit   = 15    # max length of the `unit' column
 
-  ascii = urllib.urlopen(url).read().split('\n')[ini_skip:]
+  ascii = urlopen(url).read().decode("utf-8").split('\n')[ini_skip:]
   table = {}
+
   for line in ascii:
     if not line: continue # skip empty lines (at least the end of file)
     name    = line[:  length_name].strip()
@@ -135,7 +143,7 @@ sys.stdout = open (filepath, "w")
 for line in get_header():
   print (line)
 
-print '''
+print ('''
 function [rval, uncert, unit] = physical_constant (arg)
 
   persistent unit_data;
@@ -164,19 +172,19 @@ function [rval, uncert, unit] = physical_constant (arg)
     error ("No constant with name '%s' found", arg)
   endif
 endfunction
-'''
+''')
 
-print 'function unit_data = get_data'
+print ('function unit_data = get_data')
 index = 1
 
 for name, values in sorted(table.items()):
-  print '  unit_data(' + str (index) + ').name        = "' + name            + '";'
-  print '  unit_data(' + str (index) + ').value       = '  + str (values[0]) + ';'
-  print '  unit_data(' + str (index) + ').uncertainty = '  + str (values[1]) + ';'
-  print '  unit_data(' + str (index) + ').units       = "' + values[2]       + '";'
-  print ''
+  print ('  unit_data(' + str (index) + ').name        = "' + name            + '";')
+  print ('  unit_data(' + str (index) + ').value       = '  + str (values[0]) + ';')
+  print ('  unit_data(' + str (index) + ').uncertainty = '  + str (values[1]) + ';')
+  print ('  unit_data(' + str (index) + ').units       = "' + values[2]       + '";')
+  print ('')
   index += 1
-print 'endfunction'
+print ('endfunction')
 
 for name, values in sorted(table.items()):
-  print '%!assert(physical_constant("' + name + '"), '+ str (values[0]) +');'
+  print ('%!assert(physical_constant("' + name + '"), '+ str (values[0]) +');')
