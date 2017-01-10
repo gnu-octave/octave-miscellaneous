@@ -1,5 +1,6 @@
 #!/usr/bin/python
-## coding: utf-8
+# -*- coding: utf-8 -*-
+
 ## Copyright (C) 2007 Muthiah Annamalai <muthiah.annamalai@uta.edu>
 ## Copyright (C) 2012 Carnë Draug <carandraug+dev@gmail.com>
 ##
@@ -71,7 +72,7 @@ def get_header ():
 
 def get_constants_table ():
   """Download and parse the current list of constants from NIST website"""
-  
+
   url           = 'http://physics.nist.gov/cuu/Constants/Table/allascii.txt'
   ## the ideal would be to parse the whole file in a smart way with regexp
   ## rather than relying on a fixed format which already broke this script
@@ -87,8 +88,8 @@ def get_constants_table ():
   length_value  = 25    # max length of the `value' column
   length_uncert = 25    # max length of the `uncertainty' column
   length_unit   = 15    # max length of the `unit' column
-  
-  ascii = urllib.urlopen(url).read().split('\r\n')[ini_skip:]
+
+  ascii = urllib.urlopen(url).read().split('\n')[ini_skip:]
   table = {}
   for line in ascii:
     if not line: continue # skip empty lines (at least the end of file)
@@ -99,12 +100,12 @@ def get_constants_table ():
     uncert  = line[:length_uncert].strip()
     line    = line[length_uncert:]
     unit    = line[:  length_unit].strip()
-    
+
     ## do NOT adjust name. Old code would have description (the complete string)
     ## and name (which would have some changes). However, some constants that
     ## were defined twice (for different conditions) would appear only once
     ## without information on the conditions. See the old revisions
-    
+
     ## adjust value and uncertainty
     for old, new in {
                       ' '   : '', # remove spaces
@@ -112,9 +113,10 @@ def get_constants_table ():
                       }.items():
       value  = value.replace (old, new)
       uncert = uncert.replace (old, new)
-    
+
     uncert = uncert.replace ('(exact)', '0.0')
     table[name] = [value, uncert, unit]
+
   return table
 
 
@@ -131,7 +133,7 @@ else:
 sys.stdout = open (filepath, "w")
 
 for line in get_header():
-  print line
+  print (line)
 
 print '''
 function [rval, uncert, unit] = physical_constant (arg)
@@ -166,7 +168,7 @@ endfunction
 
 print 'function unit_data = get_data'
 index = 1
-#for name in sorted (table.keys()):
+
 for name, values in sorted(table.items()):
   print '  unit_data(' + str (index) + ').name        = "' + name            + '";'
   print '  unit_data(' + str (index) + ').value       = '  + str (values[0]) + ';'
