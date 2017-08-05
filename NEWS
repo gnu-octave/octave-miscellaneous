@@ -3,6 +3,9 @@ Summary of important user-visible changes for the miscellaneous package
 ===============================================================================
 miscellaneous-X.Y.Z   Release Date: yyyy-mm-dd  Release Manager: XXXXXXX
 ===============================================================================
+ ** New functions:
+    idxmatrix: creates a matrix with each element correspoding to its 
+    subindex in the matrix.
 
  ** The function publish has been removed from the miscellaneous package
     because it is now released with Octave core since version 4.2.  Note
