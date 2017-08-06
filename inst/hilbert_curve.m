@@ -33,26 +33,29 @@ function [x, y] = hilbert_curve (n)
     print_usage ();
   endif
   
-  check_power_of_two (n);
+  exp2 = log (n) / log (2);
+  if (exp2 != floor (exp2))
+    error ('Octave:invalid-input-arg',
+           'hilbert_curve: input argument must be a power of 2.');
+  endif
+
+  [x, y] = hc_recursion (n);
+
+endfunction
+
+function [x, y] = hc_recursion (n)
+
   if (n == 2)
-    x = [0, 0, 1, 1];
-    y = [0, 1, 1, 0];
+    x = [0; 0; 1; 1];
+    y = [0; 1; 1; 0];
   else
-    [x1, y1] = hilbert_curve (n/2);
-    x = [y1, x1, n/2 + x1, n - 1 - y1];
-    y = [x1, n/2 + y1, n/2 + y1, n/2 - 1 - x1];
+    nh       = n / 2;
+    [x1, y1] = hc_recursion (nh);
+    x        = [y1; x1; nh + x1; n - 1 - y1];
+    nhy1     = nh + y1;
+    y        = [x1; nhy1; nhy1; nh - 1 - x1];
   endif
-  
-endfunction
 
-function check_power_of_two (n)
-  if (frac_part (log (n) / log (2)) != 0)
-    error ("hilbert_curve: input argument must be a power of 2.")
-  endif
-endfunction
-
-function d = frac_part (f)
-  d = f - floor (f);
 endfunction
 
 %!test
