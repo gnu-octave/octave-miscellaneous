@@ -168,3 +168,8 @@ function [str] = textable (data, varargin)
     fclose (fid);
   endif
 endfunction
+
+%!demo
+%! A = [1 2 3; 4 5 6];
+%! textable (A)
+
