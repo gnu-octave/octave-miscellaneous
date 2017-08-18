@@ -108,12 +108,12 @@ function [str] = textable (data, varargin)
   endif
 
   p = inputParser;
-  p = p.addSwitch ("clines");
-  p = p.addSwitch ("rlines");
-  p = p.addParamValue ("math", "X", @ischar);
-  p = p.addParamValue ("file", "matrix.tex", @ischar);
-  p = p.addParamValue ("align", "r", @(x) any(strcmpi(x, {"l", "c", "r"})));
-  p = p.parse (varargin{:});
+  p.addSwitch ("clines");
+  p.addSwitch ("rlines");
+  p.addParamValue ("math", "X", @ischar);
+  p.addParamValue ("file", "matrix.tex", @ischar);
+  p.addParamValue ("align", "r", @(x) any(strcmpi(x, {"l", "c", "r"})));
+  p.parse (varargin{:});
 
   ## if there is no filename given we won't print to file
   print_to_file = all (!strcmp ("file", p.UsingDefaults));
