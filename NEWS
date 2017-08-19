@@ -11,6 +11,7 @@ miscellaneous-X.Y.Z   Release Date: yyyy-mm-dd  Release Manager: XXXXXXX
     because it is now released with Octave core since version 4.2.  Note
     that it's API is slightly different.
 
+ ** The package is no longer dependent on the general package.
 
 ===============================================================================
 miscellaneous-1.2.1   Release Date: 2014-06-05  Release Manager: Carnë Draug
