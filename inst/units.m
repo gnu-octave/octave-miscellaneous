@@ -107,7 +107,7 @@ endfunction
 
 function fpath = check_units ()
   ## See bug #38270 about why we're checking this way.
-  fpath = file_in_path (getenv ("PATH"), sprintf ("units%s", octave_config_info ("EXEEXT")));
+  fpath = file_in_path (getenv ("PATH"), sprintf ("units%s", __have_feature__ ("EXEEXT")));
   if (isempty (fpath))
     error ("units: %s\nVerify that GNU units is installed in the current path.",
            rawoutput);
