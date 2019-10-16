@@ -3,4 +3,6 @@
 ## Run this to generate the configure script
 
 set -e      # halt if unhandled error
+aclocal -I m4
 autoconf    # generate configure script
+autoheader -f

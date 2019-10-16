@@ -13,6 +13,8 @@ miscellaneous-X.Y.Z   Release Date: yyyy-mm-dd  Release Manager: XXXXXXX
 
  ** The package is no longer dependent on the general package.
 
+ ** pkg update to 5.1+ functions
+
 ===============================================================================
 miscellaneous-1.2.1   Release Date: 2014-06-05  Release Manager: Carnë Draug
 ===============================================================================

@@ -1,4 +1,4 @@
-// Copyright (C) 2011 Piotr Krzyzanowski <piotr.krzyzanowski@mimuw.edu.pl>
+// Copyright (C) 2011-2019 Piotr Krzyzanowski <piotr.krzyzanowski@mimuw.edu.pl>
 //
 // This program is free software; you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -13,8 +13,10 @@
 // You should have received a copy of the GNU General Public License along with
 // this program; if not, see <http://www.gnu.org/licenses/>.
 
+#include "config.h"
+
 #include <octave/oct.h>
-#include "randmtzig.h"
+#include <randmtzig.h>
 
 /* 
 
@@ -123,7 +125,7 @@ see @url{http://netlib.bell-labs.com/cm/cs/pearls/}.\n\
 	/* as in the code from "Programming Pearls" */
 	IntSetBins2 S(m, n);
 	while (S.size() < m)
-		S.insert(floor(oct_randu()*n)); // use Octave's uniform RNG
+		S.insert(floor(OCTAVE__RAND_UNIFORM()*n)); // use Octave's uniform RNG
 	S.report(s.fortran_vec());
 	return octave_value (s);
 }

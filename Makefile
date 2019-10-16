@@ -12,6 +12,7 @@ HTML_TARBALL    = $(PACKAGE)-html.tar.gz
 MD5SUM    ?= md5sum
 SED       ?= sed
 TAR       ?= tar
+GREP      ?= grep
 
 # Follow jwe suggestion on not hinreting these vars from
 # the enviroment, so they can be set as command line arguemnts
@@ -19,6 +20,12 @@ MKOCTFILE := mkoctfile
 OCTAVE    := octave --no-gui
 
 TOLOWER = $(SED) -e 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'
+
+AUTOCONF_TARGETS := src/configure src/Makefile
+
+CC_SOURCES  := $(wildcard src/*.cc)
+PKG_ADD     := $(shell $(GREP) -sPho '(?<=(//|\#\#) PKG_ADD: ).*' \
+                         $(CC_SOURCES))
 
 .PHONY: help dist html release install all check run doc clean maintainer-clean
 
@@ -41,6 +48,7 @@ $(RELEASE_DIR): .hg/dirstate
 	@echo "Creating package version $(VERSION) release ..."
 	-rm -rf $@
 	hg archive --exclude ".hg*" --exclude Makefile --type files $@
+	cd "$@/src" && $(SHELL) ./bootstrap && $(RM) -r "autom4te.cache"
 	chmod -R a+rX,u+w,go-w $@
 
 $(RELEASE_TARBALL): $(RELEASE_DIR)
@@ -73,12 +81,13 @@ install: $(RELEASE_TARBALL)
 	@echo "Installing package locally ..."
 	$(OCTAVE) --silent --eval 'pkg install $(RELEASE_TARBALL);'
 
-all:
+all:  autoconf_target
 	cd src && $(MAKE) $@
 
 check: all
 	$(OCTAVE) --silent \
 	  --eval 'if(!isempty("$(DEPENDS)")); pkg load $(DEPENDS); endif;' \
+	  --eval '$(PKG_ADD); ' \
 	  --eval 'addpath (fullfile ([pwd filesep "inst"]));' \
 	  --eval 'addpath (fullfile ([pwd filesep "src"]));' \
 	  --eval 'runtests ("inst"); runtests ("src");'
@@ -87,7 +96,8 @@ run: all
 	$(OCTAVE) --silent --persist \
           --eval 'if(!isempty("$(DEPENDS)")); pkg load $(DEPENDS); endif;' \
 	  --eval 'addpath (fullfile ([pwd filesep "inst"]));' \
-	  --eval 'addpath (fullfile ([pwd filesep "src"]));'
+	  --eval 'addpath (fullfile ([pwd filesep "src"]));' \
+	  --eval '$(PKG_ADD)'
 
 doc:
 
@@ -96,3 +106,16 @@ clean:
 	cd src && $(MAKE) $@
 
 maintainer-clean: clean
+
+#
+# Recipes for testing purposes
+#
+src/configure: src/configure.ac
+	cd src && $(SHELL) ./bootstrap
+
+src/Makefile: src/Makefile.in src/configure
+	cd src && ./configure
+
+autoconf_target: $(AUTOCONF_TARGETS)
+
+

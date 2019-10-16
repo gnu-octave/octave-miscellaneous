@@ -1,4 +1,4 @@
-// Copyright (C) 2006 Torsten Finke <fi@igh-essen.com>
+// Copyright (C) 2006-2019 Torsten Finke <fi@igh-essen.com>
 //
 // This program is free software; you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -12,6 +12,8 @@
 //
 // You should have received a copy of the GNU General Public License along with
 // this program; if not, see <http://www.gnu.org/licenses/>.
+
+#include "config.h"
 
 #include <octave/oct.h>
 #include <octave/lo-ieee.h>
@@ -79,7 +81,7 @@ Joerg Arndt: Algorithms for programmers (http://www.jjj.de), 2006.\n\n\
         error("partcnt accepts exactly one argument");
         return r; 
     }
-    if ( ! args(0).is_numeric_type()) {
+    if ( ! args(0).OV_ISNUMERIC()) {
         error("partcnt only accepts a numeric argument");
         return r;
     }
@@ -183,7 +185,7 @@ Joerg Arndt: Algorithms for programmers (http://www.jjj.de), 2006.\n\n\
     int nargin = args.length ();
     if (nargin != 1 || 
         ! args(0).is_scalar_type() ||
-        ! args(0).is_numeric_type()
+        ! args(0).OV_ISNUMERIC()
         ) {
         error("partint only accepts one scalar positive integer argument");
         return r;

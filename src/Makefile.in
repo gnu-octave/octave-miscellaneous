@@ -8,4 +8,7 @@ all: $(PROGS)
 	$(MKOCTFILE) $<
 
 clean:
-	rm -f *.o octave-core core *.oct *~
+	$(RM) -f *.o octave-core core *.oct *~
+
+distclean: clean
+	$(RM) -f config.h Makefile
