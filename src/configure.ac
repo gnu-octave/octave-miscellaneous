@@ -6,7 +6,10 @@ AC_CHECK_HEADER([term.h],
   [],
   [AC_CHECK_HEADER([termcap.h],
     [],
-    [AC_MSG_ERROR([Unable to find ncurses library headers.])]
+    [AC_CHECK_HEADER([ncurses/termcap.h],
+      [],
+      [AC_MSG_ERROR([Unable to find ncurses library headers.])]
+    ])
   ])
 )
 
