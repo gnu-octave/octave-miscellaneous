@@ -14,6 +14,14 @@ SED       ?= sed
 TAR       ?= tar
 GREP      ?= grep
 
+HG           := hg
+HG_CMD        = $(HG) --config alias.$(1)=$(1) --config defaults.$(1)= $(1)
+HG_ID        := $(shell $(call HG_CMD,identify) --id | sed -e 's/+//' )
+HG_TIMESTAMP := $(firstword $(shell $(call HG_CMD,log) --rev $(HG_ID) --template '{date|hgdate}'))
+
+TAR_REPRODUCIBLE_OPTIONS := --sort=name --mtime="@$(HG_TIMESTAMP)" --owner=0 --group=0 --numeric-owner
+TAR_OPTIONS  := --format=ustar $(TAR_REPRODUCIBLE_OPTIONS)
+
 # Follow jwe suggestion on not hinreting these vars from
 # the enviroment, so they can be set as command line arguemnts
 MKOCTFILE := mkoctfile
@@ -47,12 +55,12 @@ help:
 $(RELEASE_DIR): .hg/dirstate
 	@echo "Creating package version $(VERSION) release ..."
 	-rm -rf $@
-	hg archive --exclude ".hg*" --exclude Makefile --type files $@
+	$(HG) archive --exclude ".hg*" --exclude Makefile --type files $@
 	cd "$@/src" && $(SHELL) ./bootstrap && $(RM) -r "autom4te.cache"
 	chmod -R a+rX,u+w,go-w $@
 
 $(RELEASE_TARBALL): $(RELEASE_DIR)
-	$(TAR) cf - --posix $< | gzip -9n > $@
+	$(TAR) -cf - $(TAR_OPTIONS) "$(notdir $<)" | gzip -9n > "$@"
 	-rm -rf $<
 
 $(HTML_DIR): install
@@ -65,7 +73,7 @@ $(HTML_DIR): install
 	chmod -R a+rX,u+w,go-w $@
 
 $(HTML_TARBALL): $(HTML_DIR)
-	$(TAR) cf - --posix $< | gzip -9n > $@
+	$(TAR) -cf - $(TAR_OPTIONS) "$(notdir $<)" | gzip -9n > "$@"
 	-rm -rf $<
 
 dist: $(RELEASE_TARBALL)
