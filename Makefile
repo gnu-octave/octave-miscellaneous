@@ -113,6 +113,9 @@ clean:
 	-rm -rf $(RELEASE_DIR) $(RELEASE_TARBALL) $(HTML_TARBALL) $(HTML_DIR)
 	cd src && $(MAKE) $@
 
+distclean: clean
+	-$(RM) -r inst/test
+
 maintainer-clean: clean
 
 #
