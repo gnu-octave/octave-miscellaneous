@@ -56,6 +56,15 @@ OF_OCTAVE_LIST_ALT_SYMS([
 ],
 
 [dnl
+  [is_cell],
+  [iscell],
+  [[octave_value ().iscell ();]],
+  [OV_ISCELL],
+  [],
+  []
+],
+
+[dnl
   [is_numeric_type],
   [isnumeric],
   [[octave_value ().isnumeric ();]],

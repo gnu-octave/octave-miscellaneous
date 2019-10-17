@@ -31,21 +31,21 @@ which contains the slices of cell array @var{c} vertical to dimension\n\
       print_usage ();
       return octave_value_list ();
     }
-
-  Cell c = args(0).cell_value ();
-  if (error_state)
+  if (!args(0).OV_ISCELL())
     {
       error ("%s: first argument must be a cell array", fname.c_str ());
       return octave_value_list ();
     }
-
-  octave_idx_type dim = args(1).int_value ();
-  if (error_state)
+  if (!args(1).OV_ISNUMERIC())
     {
       error ("%s: second argument must be an integer",
              fname.c_str ());
       return octave_value_list ();
     }
+
+  Cell c = args(0).cell_value ();
+
+  octave_idx_type dim = args(1).int_value ();
 
   octave_idx_type i, j;
 
