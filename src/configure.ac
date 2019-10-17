@@ -56,7 +56,7 @@ OF_OCTAVE_LIST_ALT_SYMS([
 ],
 
 [dnl
-  [is_numeric],
+  [is_numeric_type],
   [isnumeric],
   [[octave_value ().isnumeric ();]],
   [OV_ISNUMERIC],
