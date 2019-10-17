@@ -1,6 +1,6 @@
 miscellaneous >> Miscellaneous functions
 miscellaneous
- asci
+ ascii
  cell2cell
  chebyshevpoly
  clip
@@ -9,6 +9,7 @@ miscellaneous
  gameoflife
  hermitepoly
  hilbert_curve
+ hc2ind
  idxmatrix
  infoskeleton
  laguerrepoly
