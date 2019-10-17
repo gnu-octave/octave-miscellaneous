@@ -8,12 +8,15 @@ CC_TST_SOURCES := $(shell $(GREP) --files-with-matches '^%!' $(CC_SOURCES))
 TST_SOURCES := $(patsubst %.cc,../inst/test/%.cc-tst,$(CC_TST_SOURCES))
 
 
-all: $(PROGS) $(TST_SOURCES)
+all: $(PROGS) $(TST_SOURCES) ../inst/private/get_exeext.m
 
 %.oct: %.cc
 	$(MKOCTFILE) $<
 
 ../inst/test:
+	@mkdir -p "$@"
+
+../inst/private:
 	@mkdir -p "$@"
 
 $(TST_SOURCES): ../inst/test/%.cc-tst: %.cc | ../inst/test
@@ -22,9 +25,15 @@ $(TST_SOURCES): ../inst/test/%.cc-tst: %.cc | ../inst/test
 	@(      echo "## Generated from $<"; \
 	        $(GREP) '^%!' "$<") > "$@"
 
+../inst/private/get_exeext.m: Makefile | ../inst/private
+	@echo "Generating $@"
+	@(echo '#auto generated private file'; \
+	  echo 'function ext = get_exeext()'; \
+	  echo '  ext = "@EXEEXT@";'; \
+	  echo 'endfunction' ) > "$@"
 
 clean:
-	$(RM) -f *.o octave-core core *.oct *~
+	$(RM) -f *.o octave-core core *.oct *~ ../inst/private/get_exeext.m
 
 distclean: clean
 	$(RM) -f config.h Makefile

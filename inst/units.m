@@ -1,5 +1,5 @@
 ## Copyright (C) 2005 Carl Osterwisch <osterwischc@asme.org>
-## Copyright (C) 2013 Carnë Draug <carandraug@octave.org>
+## Copyright (C) 2013-2019 Carnë Draug <carandraug@octave.org>
 ##
 ## This program is free software; you can redistribute it and/or modify it under
 ## the terms of the GNU General Public License as published by the Free Software
@@ -107,7 +107,7 @@ endfunction
 
 function fpath = check_units ()
   ## See bug #38270 about why we're checking this way.
-  fpath = file_in_path (getenv ("PATH"), sprintf ("units%s", __octave_config_info__ ("EXEEXT")));
+  fpath = file_in_path (getenv ("PATH"), sprintf ("units%s", get_exeext()));
   if (isempty (fpath))
     error ("units: %s\nVerify that GNU units is installed in the current path.",
            rawoutput);
