@@ -1,4 +1,4 @@
-// Copyright (C) 2010 Olaf Till <olaf.till@uni-jena.de>
+// Copyright (C) 2010-2019 Olaf Till <olaf.till@uni-jena.de>
 //
 // This program is free software; you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -14,6 +14,7 @@
 // this program; if not, see <http://www.gnu.org/licenses/>.
 
 #include <octave/oct.h>
+#include "./config.h"
 
 DEFUN_DLD (cell2cell, args, , 
   "-*- texinfo -*-\n\

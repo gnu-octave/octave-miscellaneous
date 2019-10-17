@@ -1,4 +1,4 @@
-// Copyright (C) 2002 Quentin Spencer <qspencer@ieee.org>
+// Copyright (C) 2002-2019 Quentin Spencer <qspencer@ieee.org>
 //
 // This program is free software; you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -14,6 +14,7 @@
 // this program; if not, see <http://www.gnu.org/licenses/>.
 
 #include <octave/oct.h>
+#include "./config.h"
 
 // Note the extern "C" is need for mingw with a version of termcap.h
 // without the extern "C" explicitly included. Doing it twice should be
