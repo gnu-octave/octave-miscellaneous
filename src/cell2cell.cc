@@ -47,6 +47,12 @@ which contains the slices of cell array @var{c} vertical to dimension\n\
 
   octave_idx_type dim = args(1).int_value ();
 
+  if (dim < 1)
+    {
+      error ("%s: second argument must be a positive integer",
+             fname.c_str ());
+      return octave_value_list ();
+    }
   octave_idx_type i, j;
 
   dim_vector cdims (c.dims ());
@@ -130,3 +136,15 @@ which contains the slices of cell array @var{c} vertical to dimension\n\
 
   return octave_value (retval);
 }
+
+#if 0
+%!test
+%! c = { 0, 1, 2, 3 };
+%! assert (cell2cell (c, 1), { c });
+%! assert (cell2cell (c, 2), { {0}, {1}, {2}, {3} });
+
+%!fail ("cell2cell()", "cell2cell");
+%!fail ("cell2cell({1})", "cell2cell");
+%!fail ("cell2cell([], 1)", "cell2cell");
+%!fail ("cell2cell([], 0)", "cell2cell");
+#endif
