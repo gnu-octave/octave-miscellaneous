@@ -1,4 +1,5 @@
 ## Copyright (C) 2006 Hansgeorg Schwibbe
+## Copyright (C) 2019 John Donoghue
 ##
 ## This program is free software; you can redistribute it and/or modify it under
 ## the terms of the GNU General Public License as published by the Free Software
@@ -13,55 +14,63 @@
 ## You should have received a copy of the GNU General Public License along with
 ## this program; if not, see <http://www.gnu.org/licenses/>.
 
+## -*- texinfo -*-
+## @deftypefn {} csv2latex(@var{csv_file}, @var{csv_sep}, @var{latex_file})
+## @deftypefnx {} csv2latex(@var{csv_file}, @var{csv_sep}, @var{latex_file},@
+##              @var{tabular_alignments})
+## @deftypefnx {} csv2latex(@var{csv_file}, @var{csv_sep}, @var{latex_file},@
+##              @var{tabular_alignments}, @var{has_hline})
+## @deftypefnx {} csv2latex(@var{csv_file}, @var{csv_sep}, @var{latex_file},   @
+##              @var{tabular_alignments}, @var{has_hline}, @var{column_titles})
+## @deftypefnx {} csv2latex(@var{csv_file}, @var{csv_sep}, @var{latex_file},@
+##              @var{tabular_alignments}, @var{has_hline},@
+##              @var{column_titles}, @var{row_titles})
+##
 ## Creates a latex file from a csv file. The generated latex file contains a 
 ## tabular with all values of the csv file. The tabular can be decorated with 
 ## row and column titles. The generated latex file can be inserted in any latex
-## document by using the '\input{latex file name without .tex}' statement.
+## document by using the '\input@{latex file name without .tex@}' statement.
 ##
-## Usage: 
-##  - csv2latex(csv_file, csv_sep, latex_file)
-##  - csv2latex(csv_file, csv_sep, latex_file, tabular_alignments)
-##  - csv2latex(csv_file, csv_sep, latex_file, tabular_alignments, has_hline)
-##  - csv2latex(csv_file, csv_sep, latex_file,   
-##              tabular_alignments, has_hline, column_titles)
-##  - csv2latex(csv_file, csv_sep, latex_file, tabular_alignments,
-##              has_hline, column_titles, row_titles)
-##
-## Parameters:
-##  csv_file - the path to an existing csv file
-##  csv_sep - the seperator of the csv values
-##  latex_file - the path of the latex file to create     
-##  tabular_alignments - the tabular alignment preamble (default = {'l','l',...})
-##  has_hline - indicates horizontal line seperator (default = false)
-##  column_titles - array with the column titles of the tabular (default = {})
-##  row_titles - array with the row titles of the tabular (default = {})
+## csv_file - the path to an existing csv file@*
+## csv_sep - the seperator of the csv values@*
+## latex_file - the path of the latex file to create@*
+## tabular_alignments - the tabular alignment preamble
+##    (default = @{'l','l',...@})@*
+## has_hline - indicates horizontal line seperator (default = false)@*
+## column_titles - array with the column titles of the tabular
+##    (default = @{@})@*
+## row_titles - array with the row titles of the tabular (default = @{@})@*
 ##
 ## Examples:
-##  # creates the latex file 'example.tex' from the csv file 'example.csv' 
-##  csv2latex("example.csv", '\t', "example.tex");
 ##
-##  # creates the latex file with horizontal and vertical lines
-##  csv2latex('example.csv', '\t', 'example.tex', {'|l|', 'l|'}, true);
+## @example
+## # creates the latex file 'example.tex' from the csv file 'example.csv' 
+## csv2latex("example.csv", '\t', "example.tex");
+##
+## # creates the latex file with horizontal and vertical lines
+## csv2latex('example.csv', '\t', 'example.tex', @{'|l|', 'l|'@}, true);
 ## 
-##  # creates the latex file with row and column titles
-##  csv2latex('example.csv', '\t', 'example.tex', {'|l|', 'l|'}, true, 
-##            {'Column 1', 'Column 2', 'Column 3'}, {'Row 1', 'Row 2'});
+## # creates the latex file with row and column titles
+## csv2latex('example.csv', '\t', 'example.tex', @{'|l|', 'l|'@}, true, 
+##            @{'Column 1', 'Column 2', 'Column 3'@}, @{'Row 1', 'Row 2'@});
+## @end example
+## @end deftypefn
 
 function csv2latex (csv_file, csv_sep, latex_file, tabular_alignments, has_hline, column_titles, row_titles)
 
   ## set up the default values
   if nargin < 7
    row_titles = {};
-  end
+  endif
   if nargin < 6
    column_titles = {};
-  end
+  endif
   if nargin < 5
    has_hline = false;
-  end
+  endif
   if nargin < 4
    tabular_alignments = {};
-  end
+  endif
 
   ## load the csv file and create the csv cell
   [fid, msg] = fopen (csv_file, 'r'); # open the csv file to read
@@ -85,9 +94,9 @@ function csv2latex (csv_file, csv_sep, latex_file, tabular_alignments, has_hline
         line_index++;
       else
         csv_value = sprintf('%s%c', csv_value, val(index));
-      end
-    end
-  end
+      endif
+    endfor
+  endif
 
   ## get the size and length values
   [row_size, col_size] = size(csv);
@@ -102,25 +111,25 @@ function csv2latex (csv_file, csv_sep, latex_file, tabular_alignments, has_hline
     current_size = col_size + 1;
   else
     current_size = col_size;
-  end
+  endif
   for col_index = 1:current_size
    if col_index <=  alignment_size
      alignment_preamble = sprintf ('%s%s', alignment_preamble, tabular_alignments(col_index));
    else
      alignment_preamble = sprintf ('%sl', alignment_preamble);
-   end
+   endif
    if column_title_size != 0
      if col_index <= column_title_size
        if col_index == 1
          tabular_headline = sprintf ('%s', column_titles(col_index));
        else
          tabular_headline = sprintf ('%s & %s', tabular_headline, column_titles(col_index));
-       end
+       endif
      else
        tabular_headline = sprintf ('%s &', tabular_headline);       
-     end
-   end
-  end
+     endif
+   endif
+  endfor
 
   ## print latex file
   [fid, msg] = fopen (latex_file, 'w'); # open the latex file for writing
@@ -129,13 +138,13 @@ function csv2latex (csv_file, csv_sep, latex_file, tabular_alignments, has_hline
     if column_title_size != 0
       if has_hline == true
         fprintf (fid, '  \\hline\n');
-      end
+      endif
       fprintf (fid, '  %s \\\\\n',  tabular_headline); # print the headline of the tabular
-    end
+    endif
     for row_index = 1:row_size
       if has_hline == true
         fprintf (fid, '  \\hline\n');
-      end
+      endif
       for col_index = 1:col_size
         if col_index == 1
           if row_title_size != 0
@@ -143,19 +152,19 @@ function csv2latex (csv_file, csv_sep, latex_file, tabular_alignments, has_hline
               fprintf (fid, '  %s & ', row_titles(row_index)); # print the row title
             else
               fprintf (fid, '  & '); # print an empty row title
-            end
-          end
+            endif
+          endif
           fprintf (fid, '  %s ', csv{row_index, col_index});
         else
          fprintf (fid, '& %s ', csv{row_index, col_index});
-        end
-      end
+        endif
+      endfor
       fprintf (fid, '\\\\\n');
-    end
+    endfor
     if has_hline == true
       fprintf (fid, '  \\hline\n');
-    end
+    endif
     fprintf (fid, '\\end{tabular}', alignment_preamble); # print the end of the tabular
     fclose(fid); # close the latex file after writing
-  end
-end
+  endif
+endfunction
