@@ -14,7 +14,7 @@ miscellaneous-1.3.0   Release Date: 2019-10-27  Release Manager: John Donoghue
 
  ** The package is no longer dependent on the general package.
 
- ** pkg update to for octave 5.1+ functionality
+ ** pkg update for octave 5.1+ functionality
 
 ===============================================================================
 miscellaneous-1.2.1   Release Date: 2014-06-05  Release Manager: Carnë Draug
