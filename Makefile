@@ -111,10 +111,10 @@ doc:
 
 clean:
 	-rm -rf $(RELEASE_DIR) $(RELEASE_TARBALL) $(HTML_TARBALL) $(HTML_DIR)
-	cd src && $(MAKE) $@
+	-test -f src/Makefile && $(MAKE) -C src $@ || true
 
 distclean: clean
-	-$(RM) -r inst/test
+	-test -f src/Makefile && $(MAKE) -C src $@ || true
 
 maintainer-clean: clean
 

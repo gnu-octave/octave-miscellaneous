@@ -31,7 +31,11 @@ fi
 
 dnl Check for mkoctfile
 AC_CHECK_PROG(MKOCTFILE,mkoctfile,mkoctfile)
-test -z "$MKOCTFILE" &&	AC_MSG_WARN([no mkoctfile found on path])
+test -z "$MKOCTFILE" &&	AC_MSG_ERROR([no mkoctfile found on path])
+
+dnl Check for octave-config
+AC_CHECK_PROG(OCTAVE_CONFIG,octave-config,octave-config)
+test -z "OCTAVE_CONFIG" && OCTAVE_CONFIG=$MKOCTFILE
 
 # check for some octave functionality
 save_altsyms_CXX="$CXX"
