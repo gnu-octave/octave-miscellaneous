@@ -98,7 +98,7 @@ check: all
 	  --eval '$(PKG_ADD); ' \
 	  --eval 'addpath (fullfile ([pwd filesep "inst"]));' \
 	  --eval 'addpath (fullfile ([pwd filesep "src"]));' \
-	  --eval 'runtests ("inst"); runtests ("src");'
+	  --eval "__run_test_suite__ ({fullfile(pwd, 'inst')}, {})"
 
 run: all
 	$(OCTAVE) --silent --persist \
