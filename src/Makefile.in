@@ -43,4 +43,4 @@ clean:
 	test -e ../inst/$(ARCHDIR) && rmdir ../inst/$(ARCHDIR) || true
 
 distclean: clean
-	$(RM) -f config.h Makefile
+	$(RM) -f config.h Makefile config.log config.status oct-alt-includes.h
