@@ -1,5 +1,5 @@
 AC_PREREQ([2.67])
-AC_INIT([Octave-Forge miscellaneous package], [1.3.0])
+AC_INIT([Octave-Forge miscellaneous package],[1.3.0])
 AC_CONFIG_HEADERS([config.h])
 
 # Avoid warnings for redefining AH-generated preprocessor symbols of
@@ -7,6 +7,8 @@ AC_CONFIG_HEADERS([config.h])
 AH_TOP([#include "undef-ah-octave.h"])
 
 AC_CONFIG_MACRO_DIRS([m4])
+
+AC_PROG_GREP
 
 ## these are C headers required for text_waitbar
 AC_CHECK_HEADER([term.h],
@@ -84,4 +86,5 @@ CXXFLAGS=$save_altsyms_CXXFLAGS
 LDFLAGS=$save_altsyms_LDFLAGS
 LIBS=$save_altsyms_LIBS
 
-AC_OUTPUT(Makefile)
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
