@@ -39,6 +39,7 @@ archtests: $(TST_SOURCES)
 
 clean:
 	$(RM) -f *.o octave-core core *.oct *~ ../inst/private/get_exeext.m
+	test -e ../inst/private && rmdir ../inst/private || true
 	test -e ../inst/$(ARCHDIR) && rm -f $(TST_SOURCES) || true
 	test -e ../inst/$(ARCHDIR) && rmdir ../inst/$(ARCHDIR) || true
 
