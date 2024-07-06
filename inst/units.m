@@ -118,7 +118,15 @@ function compact = has_compact_option ()
   compact = true;
   ## We must give some units to convert because the only thing that would
   ## make it not do any work (--version) actually exits with exit value 3
-  [status, rawoutput] = system ('units --compact --one-line "in" "cm"');
+  #
+  is_dos = (ispc() && !isunix());
+  if is_dos
+    redirect = '2> NUL';
+  else
+    redirect = '2> /dev/null';
+  endif
+ 
+  [status, rawoutput] = system (['units --compact --one-line "in" "cm" ' redirect]);
   if (status)
     compact = false;
   endif
@@ -127,7 +135,15 @@ endfunction
 function template = template_cmd (compact)
   ## do we have the format option?
   format = true;
-  [status, rawoutput] = system ('units --output-format "%.16g" "in" "cm"');
+
+  is_dos = (ispc() && !isunix());
+  if is_dos
+    redirect = '2> NUL';
+  else
+    redirect = '2> /dev/null';
+  endif
+ 
+  [status, rawoutput] = system (['units --output-format "%.16g" "in" "cm" ' redirect]);
   if (status)
     format = false;
   endif
@@ -139,6 +155,8 @@ function template = template_cmd (compact)
   if (compact)
     template = [template '--compact --one-line '];
   endif
+
+  template = [template ' ' redirect ' '];
 endfunction
 
 ## Test the correct way to do non-linear conversion.
