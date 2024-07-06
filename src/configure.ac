@@ -9,6 +9,7 @@ AH_TOP([#include "undef-ah-octave.h"])
 AC_CONFIG_MACRO_DIRS([m4])
 
 AC_PROG_GREP
+AC_PROG_SED
 
 ## these are C headers required for text_waitbar
 AC_CHECK_HEADER([term.h],
@@ -39,15 +40,52 @@ dnl Check for octave-config
 AC_CHECK_PROG(OCTAVE_CONFIG,octave-config,octave-config)
 test -z "OCTAVE_CONFIG" && OCTAVE_CONFIG=$MKOCTFILE
 
+# try get around possible spaces in the path
+if test "X${IGNORE_MINGW_PATH_MODIFICATION}" == "X"; then
+  MSYSTEM="${MSYSTEM}"
+else
+  MSYSTEM="none"
+fi
+
+if test "X${IGNORE_MINGW_PATH_MODIFICATION}" == "X"; then
+case X$MSYSTEM in
+  XMINGW*)
+    # try demangle spaces in escaped input strings
+    MKOCTFILE=`echo $MKOCTFILE | $SED "s,\\\\\ ,?,g"`
+    OCTAVE_CONFIG=`echo $OCTAVE_CONFIG | $SED "s,\\\\\ ,?,g"`
+    ;;
+  *)
+    ;;
+esac
+fi
+
 # check for some octave functionality
 save_altsyms_CXX="$CXX"
 save_altsyms_CXXFLAGS="$CXXFLAGS"
 save_altsyms_LDFLAGS="$LDFLAGS"
 save_altsyms_LIBS="$LIBS"
-OCTINCLUDEDIR=${OCTINCLUDEDIR:-`$MKOCTFILE -p INCFLAGS`}
+OCTINCLUDEDIR="${OCTINCLUDEDIR:-`$MKOCTFILE -p OCTINCLUDEDIR`}/.."
 OCTLIBDIR=${OCTLIBDIR:-`$MKOCTFILE -p OCTLIBDIR`}
+
+case X$MSYSTEM in
+  XMINGW64*)
+    OCTAVE_HOME=`${MKOCTFILE} -p OCTAVE_HOME | $SED 's,\\\\,/,g'`
+    # change \ to / and replace octave home part with mingw part
+    OCTINCLUDEDIR=`echo $OCTINCLUDEDIR | $SED -e 's,\\\\,/,g' -e "s,${OCTAVE_HOME},/mingw64,g"`
+    OCTLIBDIR=`echo $OCTLIBDIR | $SED -e 's,\\\\,/,g' -e "s,${OCTAVE_HOME},/mingw64,g"`
+    ;;
+  XMINGW32*)
+    OCTAVE_HOME=`${MKOCTFILE} -p OCTAVE_HOME | $SED 's,\\\\,/,g'`
+    # change \ to / and replace octave home part with mingw part
+    OCTINCLUDEDIR=`echo $OCTINCLUDEDIR | $SED -e 's,\\\\,/,g' -e "s,${OCTAVE_HOME},/mingw32,g"`
+    OCTLIBDIR=`echo $OCTLIBDIR | $SED -e 's,\\\\,/,g -e "s,${OCTAVE_HOME},/mingw32,g"'`
+    ;;
+  *)
+    ;;
+esac
+
 CXX=`${MKOCTFILE} -p CXX`
-CXXFLAGS="$OCTINCLUDEDIR $CXXFLAGS"
+CXXFLAGS="-I$OCTINCLUDEDIR $CXXFLAGS"
 LDFLAGS="-L$OCTLIBDIR $LDFLAGS"
 LIBS="-loctinterp $LIBS"
 
@@ -57,8 +95,8 @@ OF_OCTAVE_LIST_ALT_SYMS([
   [octave::rand_uniform<double>],
   [[octave::rand_uniform<double> ();]],
   [OCTAVE__RAND_UNIFORM],
-  [[#include <randmtzig.h>]],
-  [[#include <randmtzig.h>]]
+  [[#include <octave/randmtzig.h>]],
+  [[#include <octave/randmtzig.h>]]
 ],
 
 [dnl
