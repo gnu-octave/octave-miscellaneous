@@ -47,9 +47,9 @@ function y = units (fromUnit, toUnit, x = 1)
     error ("units: X must be numeric");
   endif
 
-  persistent available  = check_units ();
-  persistent compact    = has_compact_option ();
-  persistent template   = template_cmd (compact);
+  persistent cmd        = check_units ();
+  persistent compact    = has_compact_option (cmd);
+  persistent template   = template_cmd (cmd, compact);
 
   ## We have to insert the template on the string this way, because it may have
   ## a %%.16g which we may want to keep for later use in non-linear conversion
@@ -105,16 +105,23 @@ function y = units (fromUnit, toUnit, x = 1)
   endif
 endfunction
 
-function fpath = check_units ()
+function name = check_units ()
   ## See bug #38270 about why we're checking this way.
-  fpath = file_in_path (getenv ("PATH"), sprintf ("units%s", get_exeext()));
+  ## Also try use gunits over units
+  name = "gunits";
+  fpath = file_in_path (getenv ("PATH"), sprintf ("gunits%s", get_exeext()));
   if (isempty (fpath))
+    name = "units";
+    fpath = file_in_path (getenv ("PATH"), sprintf ("units%s", get_exeext()));
+  endif
+  if (isempty (fpath))
+    name = "";
     error ("units: %s\nVerify that GNU units is installed in the current path.",
            rawoutput);
   endif
 endfunction
 
-function compact = has_compact_option ()
+function compact = has_compact_option (cmd)
   compact = true;
   ## We must give some units to convert because the only thing that would
   ## make it not do any work (--version) actually exits with exit value 3
@@ -126,13 +133,13 @@ function compact = has_compact_option ()
     redirect = '2> /dev/null';
   endif
  
-  [status, rawoutput] = system (['units --compact --one-line "in" "cm" ' redirect]);
+  [status, rawoutput] = system ([cmd ' --compact --one-line "in" "cm" ' redirect]);
   if (status)
     compact = false;
   endif
 endfunction
 
-function template = template_cmd (compact)
+function template = template_cmd (cmd, compact)
   ## do we have the format option?
   format = true;
 
@@ -143,12 +150,12 @@ function template = template_cmd (compact)
     redirect = '2> /dev/null';
   endif
  
-  [status, rawoutput] = system (['units --output-format "%.16g" "in" "cm" ' redirect]);
+  [status, rawoutput] = system ([cmd ' --output-format "%.16g" "in" "cm" ' redirect]);
   if (status)
     format = false;
   endif
 
-  template = "units ";
+  template = [cmd " "];
   if (format)
     template = [template '--output-format "%%.16g" '];
   endif
