@@ -1,5 +1,16 @@
 Summary of important user-visible changes for the miscellaneous package
 ------------------------------------------------------------------------
+
+===============================================================================
+miscellaneous-1.3.1   Release Date: 2024-07-24  Release Manager: John Donoghue
+===============================================================================
+ ** pkg update for octave 7.0+ functionality
+
+ ** gunits: check for gunits if available, redirect errors to nul
+
+ ** Allow spaces in octave path for configure
+
+
 ===============================================================================
 miscellaneous-1.3.0   Release Date: 2019-10-27  Release Manager: John Donoghue
 ===============================================================================
