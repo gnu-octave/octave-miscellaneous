@@ -146,7 +146,7 @@ function [op,nread] = read_options (args, varargin) ## pos 2.1.39
     endif
     if nocase, name = tolower (name); endif
 
-    ii = findstr ([" ",name], opts);
+    ii = strfind ([" ",name], opts);
     
     if isempty (ii)		# Whoa! Unknown option name
       if quiet, nread--; return;
