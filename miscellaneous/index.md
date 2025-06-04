@@ -1,0 +1,22 @@
+---
+layout: "overview"
+permalink: "/index"
+title: "Miscellaneous Toolkit - Overview"
+pkg_name: "miscellaneous"
+version: "1.3.1"
+pkg_date: "2024-07-24"
+description: "Miscellaneous tools that don't fit somewhere else."
+author: "various authors"
+maintainer: "Octave-Forge community <octave-dev@lists.sourceforge.net>"
+license: "GPLv3+"
+pkg_url: "http://octave.sf.net"
+navigation:
+- id: "overview"
+  name: "Overview"
+- id: "Functions"
+  name: "Function Reference"
+  url: "/functions"
+- id: "news"
+  name: "News"
+  url: "/news"
+---
