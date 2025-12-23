@@ -14,12 +14,21 @@ SED       ?= sed
 TAR       ?= tar
 GREP      ?= grep
 
+vcs := $(if $(wildcard .hg),hg,$(if $(wildcard .git),git,unknown))
+ifeq ($(vcs),hg)
+release_dir_dep := .hg/dirstate
 HG           := hg
 HG_CMD        = $(HG) --config alias.$(1)=$(1) --config defaults.$(1)= $(1)
 HG_ID        := $(shell $(call HG_CMD,identify) --id | sed -e 's/+//' )
-HG_TIMESTAMP := $(firstword $(shell $(call HG_CMD,log) --rev $(HG_ID) --template '{date|hgdate}'))
+REPO_TIMESTAMP := $(firstword $(shell $(call HG_CMD,log) --rev $(HG_ID) --template '{date|hgdate}'))
+endif
+ifeq ($(vcs),git)
+release_dir_dep := .git/index
+GIT          := git
+REPO_TIMESTAMP := $(firstword $(shell $(GIT) log -n1 --date=unix --format="%ad"))
+endif
 
-TAR_REPRODUCIBLE_OPTIONS := --sort=name --mtime="@$(HG_TIMESTAMP)" --owner=0 --group=0 --numeric-owner
+TAR_REPRODUCIBLE_OPTIONS := --sort=name --mtime="@$(REPO_TIMESTAMP)" --owner=0 --group=0 --numeric-owner
 TAR_OPTIONS  := --format=ustar $(TAR_REPRODUCIBLE_OPTIONS)
 
 # Follow jwe suggestion on not hinreting these vars from
@@ -52,10 +61,15 @@ help:
 	@echo "   clean            - Remove releases, html documentation, and oct files"
 	@echo "   maintainer-clean - Additionally remove all generated files"
 
-$(RELEASE_DIR): .hg/dirstate
+$(RELEASE_DIR): $(release_dir_dep)
 	@echo "Creating package version $(VERSION) release ..."
 	-rm -rf $@
+ifeq (${vcs},hg)
 	$(HG) archive --exclude ".hg*" --exclude Makefile --type files $@
+endif
+ifeq (${vcs},git)
+	git archive --format=tar --prefix="$@/" HEAD | $(TAR) -x
+endif
 	cd "$@/src" && $(SHELL) ./bootstrap && $(RM) -r "autom4te.cache"
 	chmod -R a+rX,u+w,go-w $@
 
@@ -82,8 +96,6 @@ html: $(HTML_TARBALL)
 
 release: dist html
 	@$(MD5SUM) $(RELEASE_TARBALL) $(HTML_TARBALL)
-	@echo "Upload @ https://sourceforge.net/p/octave/package-releases/new/"
-	@echo "Execute: hg tag \"$(VERSION)\""
 
 install: $(RELEASE_TARBALL)
 	@echo "Installing package locally ..."
