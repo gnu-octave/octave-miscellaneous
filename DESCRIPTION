@@ -11,4 +11,6 @@ Autoload: no
 SystemRequirements: units
 BuildRequires: termcap-devel [Debian], libncurses5-dev, GNU units
 License: GPLv3+
-Url: http://octave.sf.net
+Url: https://gnu-octave.github.io/octave-miscellaneous/
+Repository: https://github.com/gnu-octave/octave-miscellaneous/
+Tracker: https://github.com/gnu-octave/octave-miscellaneous/issues
