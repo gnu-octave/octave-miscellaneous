@@ -1,5 +1,5 @@
 AC_PREREQ([2.67])
-AC_INIT([Octave-Forge miscellaneous package],[1.3.1])
+AC_INIT([Octave-Forge miscellaneous package],[1.3.2])
 AC_CONFIG_HEADERS([config.h])
 
 # Avoid warnings for redefining AH-generated preprocessor symbols of
