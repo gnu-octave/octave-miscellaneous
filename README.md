@@ -5,6 +5,8 @@ The Octave Miscellaneous package provides tools that don't fit anywhere else.
 
 Functions include:
 
+| Function | Description
+|--- | ---
 | ascii	        | Print ASCII table.
 | cell2cell	    | Return a one-dimensional cell array, extending along dimension DIM.
 | chebyshevpoly	| Compute the coefficients of the Chebyshev polynomial, given the ORDER.
