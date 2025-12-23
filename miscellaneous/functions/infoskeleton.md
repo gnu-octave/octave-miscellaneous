@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/12_infoskeleton/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - infoskeleton"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-index_005fstr_002c"><span class="category-def">Function File: </span><span><code class="def-type">infoskeleton(<var class="var">prototype</var>,</code> <strong class="def-name"><var class="var">index_str</var>,</strong> <code class="def-code-arguments"><var class="var">see_also</var>)</code><a class="copiable-link" href="#index-index_005fstr_002c"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-index_005fstr_002c"><span class="category-def">Function File: </span><span><code class="def-type">infoskeleton(<var class="var">prototype</var>,</code> <strong class="def-name"><var class="var">index_str</var>,</strong> <code class="def-code-arguments"><var class="var">see_also</var>)</code><a class="copiable-link" href="#index-index_005fstr_002c"></a></span></dt>
 <dd><p>Generate TeXinfo skeleton documentation of <var class="var">prototype</var>.
 </p>
 <p>Optionally <var class="var">index_str</var> and <var class="var">see_also</var> can be specified.

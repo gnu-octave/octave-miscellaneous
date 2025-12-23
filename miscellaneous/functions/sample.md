@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/6_sample/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - sample"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-_003d"><span class="category-def">Loadable Function: </span><span><code class="def-type"><var class="var">s</var></code> <strong class="def-name">=</strong> <code class="def-code-arguments">sample (<var class="var">m</var>, <var class="var">n</var>)</code><a class="copiable-link" href="#index-_003d"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-_003d"><span class="category-def">Loadable Function: </span><span><code class="def-type"><var class="var">s</var></code> <strong class="def-name">=</strong> <code class="def-code-arguments">sample (<var class="var">m</var>, <var class="var">n</var>)</code><a class="copiable-link" href="#index-_003d"></a></span></dt>
 <dd><p>Return <var class="var">m</var> unique random integer values from 0..<var class="var">n</var>-1,
 sorted in ascending order.
 </p>

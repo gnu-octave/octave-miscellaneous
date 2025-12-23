@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/5_match/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - match"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-_003d"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">result</var></code> <strong class="def-name">=</strong> <code class="def-code-arguments"> match ( <var class="var">fun_handle</var>, <var class="var">iterable</var> )</code><a class="copiable-link" href="#index-_003d"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-_003d"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">result</var></code> <strong class="def-name">=</strong> <code class="def-code-arguments"> match ( <var class="var">fun_handle</var>, <var class="var">iterable</var> )</code><a class="copiable-link" href="#index-_003d"></a></span></dt>
 <dd><p>match is filter, like Lisp&rsquo;s ( &amp; numerous other language&rsquo;s ) function for
  Python has a built-in filter function which takes two arguments,
  a function and a list, and returns a list. &rsquo;match&rsquo; performs the same

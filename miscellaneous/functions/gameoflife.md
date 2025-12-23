@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/10_gameoflife/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - gameoflife"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-gameoflife"><span class="category-def">Function File: </span><span><code class="def-type">B =</code> <strong class="def-name">gameoflife</strong> <code class="def-code-arguments">(A, ngen, delay)</code><a class="copiable-link" href="#index-gameoflife"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-gameoflife"><span class="category-def">Function File: </span><span><code class="def-type">B =</code> <strong class="def-name">gameoflife</strong> <code class="def-code-arguments">(A, ngen, delay)</code><a class="copiable-link" href="#index-gameoflife"></a></span></dt>
 <dd><p>Runs the Conways&rsquo; game of life from a given initial state for a given
  number of generations and visualizes the process.
  If ngen is infinity, the process is run as long as A changes.

@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/6_reduce/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - reduce"
 category: "miscellaneous"
@@ -17,13 +17,14 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-reduce"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">reduce</strong> <code class="def-code-arguments">(<var class="var">function</var>, <var class="var">sequence</var>,<var class="var">initializer</var>)</code><a class="copiable-link" href="#index-reduce"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-reduce-1"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">reduce</strong> <code class="def-code-arguments">(<var class="var">function</var>, <var class="var">sequence</var>)</code><a class="copiable-link" href="#index-reduce-1"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-reduce"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">reduce</strong> <code class="def-code-arguments">(<var class="var">function</var>, <var class="var">sequence</var>,<var class="var">initializer</var>)</code><a class="copiable-link" href="#index-reduce"></a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-reduce-1"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">reduce</strong> <code class="def-code-arguments">(<var class="var">function</var>, <var class="var">sequence</var>)</code><a class="copiable-link" href="#index-reduce-1"></a></span></dt>
 <dd><p>Implements the &rsquo;reduce&rsquo; operator like in Lisp, or Python.
  Apply function of two arguments cumulatively to the items of sequence, 
  from left to right, so as to reduce the sequence to a single value. For example,

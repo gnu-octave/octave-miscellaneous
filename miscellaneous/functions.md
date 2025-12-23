@@ -3,7 +3,7 @@ layout: "function_list"
 permalink: "/functions/"
 title: "Miscellaneous Toolkit - Functions"
 pkg_name: "miscellaneous"
-version: "1.3.1"
+version: "1.3.2"
 description: "Miscellaneous tools that don't fit somewhere else."
 categories:
 - id: "13_miscellaneous"
@@ -149,6 +149,7 @@ categories:
     name: "zigzag"
     description: "Returns zigzag walk-off of the elements of MTRX."
     url: "/functions/6_zigzag/"
+  groups:
 navigation:
 - id: "overview"
   name: "Overview"
@@ -158,6 +159,7 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"

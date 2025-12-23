@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/12_readoptions/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - read_options"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-read_005foptions"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">[op,nread]</var> =</code> <strong class="def-name">read_options</strong> <code class="def-code-arguments">( args, varargin )</code><a class="copiable-link" href="#index-read_005foptions"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-read_005foptions"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">[op,nread]</var> =</code> <strong class="def-name">read_options</strong> <code class="def-code-arguments">( args, varargin )</code><a class="copiable-link" href="#index-read_005foptions"></a></span></dt>
 <dd><p>The function read_options parses arguments to a function as,
  [ops,nread] = read_options (args,...) - Read options
 </p>

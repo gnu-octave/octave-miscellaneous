@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/9_idxmatrix/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - idxmatrix"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deffn first-defun-alias-first-deffn">
-<dt class="deffn defun-alias-deffn" id="index-m-_003d"><span class="category-def">Function: </span><span><strong class="def-name"><var class="var">m</var> =</strong> <var class="def-var-arguments">idxmatrix (<var class="var">sz</var>)</var><a class="copiable-link" href="#index-m-_003d"></a></span></dt>
+<dl class="first-deffn first-defun-alias-first-deffn def-block">
+<dt class="deffn defun-alias-deffn def-line" id="index-m-_003d"><span class="category-def">Function: </span><span><strong class="def-name"><var class="var">m</var> =</strong> <var class="def-var-arguments">idxmatrix (<var class="var">sz</var>)</var><a class="copiable-link" href="#index-m-_003d"></a></span></dt>
 <dd><p>Create matrix of subindexes
 </p>
 <p>Create a matrix with each element correspoding

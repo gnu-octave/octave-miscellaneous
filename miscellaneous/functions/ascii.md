@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/5_ascii/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - ascii"
 category: "miscellaneous"
@@ -17,13 +17,14 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-ascii"><span class="category-def">Function File: </span><span><strong class="def-name">ascii</strong> <code class="def-code-arguments">()</code><a class="copiable-link" href="#index-ascii"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-ascii-1"><span class="category-def">Function File: </span><span><strong class="def-name">ascii</strong> <code class="def-code-arguments">(<var class="var">columns</var>)</code><a class="copiable-link" href="#index-ascii-1"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-ascii"><span class="category-def">Function File: </span><span><strong class="def-name">ascii</strong> <code class="def-code-arguments">()</code><a class="copiable-link" href="#index-ascii"></a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ascii-1"><span class="category-def">Function File: </span><span><strong class="def-name">ascii</strong> <code class="def-code-arguments">(<var class="var">columns</var>)</code><a class="copiable-link" href="#index-ascii-1"></a></span></dt>
 <dd><p>Print ASCII table.
 </p>
 <p>If this function is called without any input argument and without any output

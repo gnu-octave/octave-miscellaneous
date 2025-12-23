@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/11_hermitepoly/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - hermitepoly"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-hermitepoly"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">coefs</var>=</code> <strong class="def-name">hermitepoly</strong> <code class="def-code-arguments">(<var class="var">order</var>,<var class="var">x</var>)</code><a class="copiable-link" href="#index-hermitepoly"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-hermitepoly"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">coefs</var>=</code> <strong class="def-name">hermitepoly</strong> <code class="def-code-arguments">(<var class="var">order</var>,<var class="var">x</var>)</code><a class="copiable-link" href="#index-hermitepoly"></a></span></dt>
 <dd> 
 <p>Compute the coefficients of the Hermite polynomial, given the 
  <var class="var">order</var>. We calculate the Hermite polynomial using the recurrence

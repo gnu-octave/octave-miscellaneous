@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/12_textwaitbar/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - text_waitbar"
 category: "miscellaneous"
@@ -17,14 +17,15 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-text_005fwaitbar"><span class="category-def">Loadable Function: </span><span><strong class="def-name">text_waitbar</strong> <code class="def-code-arguments">(<var class="var">frac</var>)</code><a class="copiable-link" href="#index-text_005fwaitbar"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-text_005fwaitbar-1"><span class="category-def">Loadable Function: </span><span><strong class="def-name">text_waitbar</strong> <code class="def-code-arguments">(<var class="var">frac</var>, <var class="var">msg</var>)</code><a class="copiable-link" href="#index-text_005fwaitbar-1"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-text_005fwaitbar-2"><span class="category-def">Loadable Function: </span><span><strong class="def-name">text_waitbar</strong> <code class="def-code-arguments">(0, <var class="var">n</var>)</code><a class="copiable-link" href="#index-text_005fwaitbar-2"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-text_005fwaitbar"><span class="category-def">Loadable Function: </span><span><strong class="def-name">text_waitbar</strong> <code class="def-code-arguments">(<var class="var">frac</var>)</code><a class="copiable-link" href="#index-text_005fwaitbar"></a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-text_005fwaitbar-1"><span class="category-def">Loadable Function: </span><span><strong class="def-name">text_waitbar</strong> <code class="def-code-arguments">(<var class="var">frac</var>, <var class="var">msg</var>)</code><a class="copiable-link" href="#index-text_005fwaitbar-1"></a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-text_005fwaitbar-2"><span class="category-def">Loadable Function: </span><span><strong class="def-name">text_waitbar</strong> <code class="def-code-arguments">(0, <var class="var">n</var>)</code><a class="copiable-link" href="#index-text_005fwaitbar-2"></a></span></dt>
 <dd><p>Display text-based waitbar/progress bar.
 </p>
 <p>This function is similar to the <code class="code">waitbar</code> function but is a text, rather

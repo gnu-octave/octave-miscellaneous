@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/5_units/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - units"
 category: "miscellaneous"
@@ -17,13 +17,14 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-units"><span class="category-def">Function File: </span><span><strong class="def-name">units</strong> <code class="def-code-arguments">(<var class="var">fromUnit</var>, <var class="var">toUnit</var>)</code><a class="copiable-link" href="#index-units"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-units-1"><span class="category-def">Function File: </span><span><strong class="def-name">units</strong> <code class="def-code-arguments">(<var class="var">fromUnit</var>, <var class="var">toUnit</var>, <var class="var">x</var>)</code><a class="copiable-link" href="#index-units-1"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-units"><span class="category-def">Function File: </span><span><strong class="def-name">units</strong> <code class="def-code-arguments">(<var class="var">fromUnit</var>, <var class="var">toUnit</var>)</code><a class="copiable-link" href="#index-units"></a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-units-1"><span class="category-def">Function File: </span><span><strong class="def-name">units</strong> <code class="def-code-arguments">(<var class="var">fromUnit</var>, <var class="var">toUnit</var>, <var class="var">x</var>)</code><a class="copiable-link" href="#index-units-1"></a></span></dt>
 <dd><p>Return the conversion factor from <var class="var">fromUnit</var> to <var class="var">toUnit</var> measurements.
 </p>
 <p>This is an octave interface to the <strong class="strong">GNU Units</strong> program which comes

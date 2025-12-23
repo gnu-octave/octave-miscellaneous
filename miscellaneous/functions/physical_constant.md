@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/17_physicalconstant/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - physical_constant"
 category: "miscellaneous"
@@ -17,14 +17,15 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-physical_005fconstant"><span class="category-def">Function File: </span><span><code class="def-type">[<var class="var">names</var>] =</code> <strong class="def-name">physical_constant</strong><a class="copiable-link" href="#index-physical_005fconstant"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-physical_005fconstant-1"><span class="category-def">Function File: </span><span><code class="def-type">[<var class="var">val</var>, <var class="var">uncertainty</var>, <var class="var">unit</var>] =</code> <strong class="def-name">physical_constant</strong> <code class="def-code-arguments">(<var class="var">name</var>)</code><a class="copiable-link" href="#index-physical_005fconstant-1"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-physical_005fconstant-2"><span class="category-def">Function File: </span><span><code class="def-type">[<var class="var">constants</var>] =</code> <strong class="def-name">physical_constant</strong> <code class="def-code-arguments">(&quot;all&quot;)</code><a class="copiable-link" href="#index-physical_005fconstant-2"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-physical_005fconstant"><span class="category-def">Function File: </span><span><code class="def-type">[<var class="var">names</var>] =</code> <strong class="def-name">physical_constant</strong><a class="copiable-link" href="#index-physical_005fconstant"></a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-physical_005fconstant-1"><span class="category-def">Function File: </span><span><code class="def-type">[<var class="var">val</var>, <var class="var">uncertainty</var>, <var class="var">unit</var>] =</code> <strong class="def-name">physical_constant</strong> <code class="def-code-arguments">(<var class="var">name</var>)</code><a class="copiable-link" href="#index-physical_005fconstant-1"></a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-physical_005fconstant-2"><span class="category-def">Function File: </span><span><code class="def-type">[<var class="var">constants</var>] =</code> <strong class="def-name">physical_constant</strong> <code class="def-code-arguments">(&quot;all&quot;)</code><a class="copiable-link" href="#index-physical_005fconstant-2"></a></span></dt>
 <dd><p>Get physical constant <var class="var">arg</var>.
 </p>
 <p>If no arguments are given, returns a cell array with all possible <var class="var">name</var>s.

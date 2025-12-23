@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/10_slurpfile/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - slurp_file"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-slurp_005ffile"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">s</var> =</code> <strong class="def-name">slurp_file</strong> <code class="def-code-arguments">( f )</code><a class="copiable-link" href="#index-slurp_005ffile"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-slurp_005ffile"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">s</var> =</code> <strong class="def-name">slurp_file</strong> <code class="def-code-arguments">( f )</code><a class="copiable-link" href="#index-slurp_005ffile"></a></span></dt>
 <dd><p>slurp_file return a whole text file <var class="var">f</var> as a string <var class="var">s</var>.
 </p>
 <p><var class="var">f</var> : string : filename

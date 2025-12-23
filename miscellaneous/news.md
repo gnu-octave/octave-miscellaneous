@@ -3,7 +3,7 @@ layout: "default"
 permalink: "/news/"
 title: "Miscellaneous Toolkit - News"
 pkg_name: "miscellaneous"
-version: "1.3.1"
+version: "1.3.2"
 description: "Miscellaneous tools that don't fit somewhere else."
 navigation:
 - id: "overview"
@@ -18,6 +18,14 @@ navigation:
 <pre>
 Summary of important user-visible changes for the miscellaneous package
 ------------------------------------------------------------------------
+
+===============================================================================
+miscellaneous-1.3.2   Release Date: 2025-12-23  Release Manager: John Donoghue
+===============================================================================
+
+ ** pkg update for octave 10.0+ functionality
+
+ ** Doc updates for github repo
 
 ===============================================================================
 miscellaneous-1.3.1   Release Date: 2024-07-24  Release Manager: John Donoghue

@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/11_peanocurve/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - peano_curve"
 category: "miscellaneous"
@@ -17,12 +17,13 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-peano_005fcurve"><span class="category-def">Function file: </span><span><code class="def-type"><var class="var">x</var>, <var class="var">y</var></code> <strong class="def-name">peano_curve</strong> <code class="def-code-arguments">(<var class="var">n</var>)</code><a class="copiable-link" href="#index-peano_005fcurve"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-peano_005fcurve"><span class="category-def">Function file: </span><span><code class="def-type"><var class="var">x</var>, <var class="var">y</var></code> <strong class="def-name">peano_curve</strong> <code class="def-code-arguments">(<var class="var">n</var>)</code><a class="copiable-link" href="#index-peano_005fcurve"></a></span></dt>
 <dd><p>Creates an iteration of the Peano space-filling curve with <var class="var">n</var> points. 
  The argument <var class="var">n</var> must be of the form <code class="code">3^M</code>, where <var class="var">m</var> is an 
  integer greater than 0.

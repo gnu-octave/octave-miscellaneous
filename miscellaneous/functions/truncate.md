@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/8_truncate/"
 pkg_name: "miscellaneous"
-pkg_version: "1.3.1"
+pkg_version: "1.3.2"
 pkg_description: "Miscellaneous tools that don't fit somewhere else."
 title: "Miscellaneous Toolkit - truncate"
 category: "miscellaneous"
@@ -17,13 +17,14 @@ navigation:
 - id: "13_miscellaneous"
   name: "&nbsp;&nbsp;miscellaneous"
   url: "/functions/#13_miscellaneous"
+  subitems:
 - id: "news"
   name: "News"
   url: "/news"
 ---
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-truncate"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">y</var> =</code> <strong class="def-name">truncate</strong> <code class="def-code-arguments">(<var class="var">x</var>, <var class="var">order</var>, <var class="var">method</var>)</code><a class="copiable-link" href="#index-truncate"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-truncate-1"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">y</var> =</code> <strong class="def-name">truncate</strong> <code class="def-code-arguments">(&hellip;, <var class="var">method</var>)</code><a class="copiable-link" href="#index-truncate-1"></a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-truncate"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">y</var> =</code> <strong class="def-name">truncate</strong> <code class="def-code-arguments">(<var class="var">x</var>, <var class="var">order</var>, <var class="var">method</var>)</code><a class="copiable-link" href="#index-truncate"></a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-truncate-1"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">y</var> =</code> <strong class="def-name">truncate</strong> <code class="def-code-arguments">(&hellip;, <var class="var">method</var>)</code><a class="copiable-link" href="#index-truncate-1"></a></span></dt>
 <dd><p>Truncates <var class="var">X</var> to <var class="var">order</var> of magnitude.
 </p>
 <p>The optional argument <var class="var">method</var> can be a hanlde to a function used to
